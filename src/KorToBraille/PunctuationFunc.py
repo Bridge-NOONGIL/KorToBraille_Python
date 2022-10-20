@@ -8,6 +8,7 @@ open_flag = False # 따옴표 열고 닫는 flag
 
 def translatePunc(text: str):
   result = ""
+  global open_flag
   for i in range(len(text)):
     if text[i] in quotes_kor_list:
       if open_flag == False:

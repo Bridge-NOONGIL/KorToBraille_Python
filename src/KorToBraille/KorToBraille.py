@@ -1,3 +1,5 @@
+from NumberFunc import translateNumber
+from PunctuationFunc import translatePunc
 from data import kor_abb, kor_cho, kor_jung, kor_jong
 
 # 초성 리스트. 00 ~ 18
@@ -20,7 +22,6 @@ class KorToBraille:
     flag_10 = False # 제 10항 관련 Flag - 앞글자가 모음으로 끝남 = 종성이 없음
     flag_11 = False # 제 11항 관련 flag
     flag_17 = False # 제 12항 관련 flag
-    isdigit_flag = False
 
     def __init__(self) -> None:
         pass
@@ -295,9 +296,9 @@ class KorToBraille:
             if word == "":
                 continue
             
-            # (1) 숫자번역
-            # (2) 문장부호 번역
-            result += self.korWordToBraille(word) # (3) 한글번역
+            word_translatedNumber = translateNumber(word) # (1) 숫자번역
+            word_translatedNumber = translatePunc(word_translatedNumber) # (2) 문장부호 번역
+            result += self.korWordToBraille(word_translatedNumber) # (3) 한글번역
 
             result += "⠀"
 
@@ -305,10 +306,10 @@ class KorToBraille:
             self.flag_10 = False
             self.flag_11 = False
             self.flag_17 = False
-            self.isdigit_flag = False
+            
         
         return result
 
 if __name__ == '__main__':
-    b = KorToBraille().korTranslate("시각장애인이 아니면 점자를 배우고 익힌 사람이 많지 않아 점자로 표현하고자 하는 사람이 있어도 그 뜻을 펴지 못하는 경우가 많습니다")
+    b = KorToBraille().korTranslate("2019년 11월 4일 제93회 점자의 날을 기념하여 점자 번역기 '점자로'를 공개합니다. 별도의 프로그램 설치 없이 웹 페이지에서 바로 사용할 수 있습니다.")
     print(b)

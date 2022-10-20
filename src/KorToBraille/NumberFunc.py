@@ -35,4 +35,28 @@ def chosungCheck(word: str):
 
 def translateNumber(text: str):
   result = ""
-  
+  global isdigit_flag
+  for i in range(len(text)):
+    if text[i].isdigit():
+      if isdigit_flag == False:
+        isdigit_flag = True
+        result += number_braille
+        result += number_braille_dict[text[i]]
+      else:
+        result += number_braille_dict[text[i]]
+
+      if i < len(text) - 1: # 제38항: 숫자와 혼용되는 '운'의 약자가 숫자 다음에 이어 나올 때에는 숫자와 한글을 띄어 쓴다.
+        if text[i+1] == "운":
+          result += " "
+
+    elif (text[i] in number_punctuation_valid and isdigit_flag == True):
+      result += number_punctuation_valid_dict[text[i]]
+    
+    else: #제38항: 숫자와 혼용되는 'ㄴ,ㄷ,ㅁ,ㅋ,ㅌ,ㅍ,ㅎ'의 첫소리 글자와 숫자 다음에 이어 나올 때에는 숫자와 한글을 띄어 쓴다.
+      cho =  chosungCheck(text[i])
+      if (cho == "ㄴ" or cho == "ㄷ" or cho == "ㅁ" or cho == "ㅋ" or cho == "ㅌ" or cho == "ㅍ" or cho == "ㅎ") and isdigit_flag == True:
+        result += "⠀"
+
+      result += text[i]
+      isdigit_flag = False
+  return result
