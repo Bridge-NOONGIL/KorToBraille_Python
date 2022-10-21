@@ -1,4 +1,4 @@
-for i in 'asd f':
-  print(i)
+from KorToBraille.KorToBraille import KorToBraille
 
-print("가"< "돩"< "힣")
+b = KorToBraille()
+print(b.korTranslate("안녕하세요. 점자 번역 패키지입니다."))
