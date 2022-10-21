@@ -1,4 +1,4 @@
-# BrailleToKor_Python
+# KorToBraille_Python
 
 한글을 점자로 번역할 수 있는 KorToBraille 파이썬 패키지입니다.
 
