@@ -83,6 +83,8 @@ class KorToBraille:
             # 제2항: ‘ᄋ’이 첫소리 자리에 쓰일 때에는 이를 표기하지 않는다.
             if cho == "ㅇ":
                 cho = ""
+            else:
+                self.flag_17 = False
 
             braille_cho = kor_cho[cho]  # 초성 점자
             # 중성
@@ -324,6 +326,7 @@ class KorToBraille:
 
         return result
 
+
 # if __name__ == '__main__':
-#     b = KorToBraille().korTranslate("2019년 11월 4일 제93회 점자의 날을 기념하여 점자 번역기 '점자로'를 공개합니다. 별도의 프로그램 설치 없이 웹 페이지에서 바로 사용할 수 있습니다.")
+#     b = KorToBraille().korTranslate("안녕하세요. 점자 번역 패키지입니다.")
 #     print(b)

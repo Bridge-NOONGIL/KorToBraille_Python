@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "KorToBraille"
-version = "1.0.0"
+version = "1.0.2"
 authors = [
     {name="Yujin Yang", email="uujinn0804@gmail.com"},
     {name="Nayeon Kim", email="nyn2265@gmail.com" },
