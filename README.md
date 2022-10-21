@@ -7,7 +7,7 @@ KorToBraille Python package that translates Korean to braille string.
 ## Quick Start
 
 ```shell
-$ pip install KorToBraille
+$ pip install KorToBraille==1.0.2
 ```
 
 ## Usage Example
